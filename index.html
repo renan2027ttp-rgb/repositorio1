@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full" style="scroll-behavior:smooth">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STRIDE — Premium Sneakers</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+html,body{margin:0;padding:0;height:100%;overflow-x:hidden}
+*{box-sizing:border-box}
+.font-display{font-family:'Instrument Serif',Georgia,serif}
+.font-body{font-family:'DM Sans',sans-serif}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+.product-card{transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.product-card:hover{transform:translateY(-8px)}
+.product-card .product-img{transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.product-card:hover .product-img{transform:scale(1.05) rotate(-2deg)}
+.buy-btn{position:relative;overflow:hidden}
+.buy-btn::after{content:'';position:absolute;inset:0;background:#fff;transform:translateX(-101%);transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.buy-btn:hover::after{transform:translateX(0)}
+.buy-btn span{position:relative;z-index:1}
+.buy-btn:hover span{color:#0a0a0a}
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:currentColor;transition:width .3s ease}
+.nav-link:hover::after{width:100%}
+.blog-card{transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.blog-card:hover{transform:translateY(-4px)}
+.sneaker-svg{filter:drop-shadow(0 20px 40px rgba(0,0,0,.15))}
+.hero-line{overflow:hidden}
+.hero-line span{display:inline-block;animation:slideUp .8s cubic-bezier(.22,1,.36,1) forwards;opacity:0;transform:translateY(100%)}
+@keyframes slideUp{to{opacity:1;transform:translateY(0)}}
+.hero-line:nth-child(2) span{animation-delay:.15s}
+.marquee{animation:marquee 20s linear infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.portfolio-item{position:relative;overflow:hidden}
+.portfolio-item .overlay{opacity:0;transition:opacity .4s ease}
+.portfolio-item:hover .overlay{opacity:1}
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body" style="background:#fafafa;color:#0a0a0a">
+  <div id="app" class="w-full" style="min-height:100%;overflow-y:auto;overflow-x:hidden"><!-- Navbar -->
+   <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500" style="background:transparent">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between"><a href="#hero" id="nav-brand" class="font-display text-2xl tracking-tight" style="color:#0a0a0a">STRIDE</a>
+     <div class="hidden md:flex items-center gap-8 text-sm tracking-wide font-medium" style="color:#0a0a0a"><a href="#shop" class="nav-link">Loja</a> <a href="#portfolio" class="nav-link">Portfólio</a> <a href="#blog" class="nav-link">Journal</a> <a href="#footer" class="nav-link">Contato</a>
+     </div><button id="mobile-toggle" class="md:hidden" aria-label="Menu"><i data-lucide="menu" style="width:24px;height:24px"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 flex flex-col gap-4 text-sm font-medium" style="background:#fafafa"><a href="#shop" class="py-2 border-b" style="border-color:#e5e5e5" onclick="closeMobile()">Loja</a> <a href="#portfolio" class="py-2 border-b" style="border-color:#e5e5e5" onclick="closeMobile()">Portfólio</a> <a href="#blog" class="py-2 border-b" style="border-color:#e5e5e5" onclick="closeMobile()">Journal</a> <a href="#footer" class="py-2" onclick="closeMobile()">Contato</a>
+    </div>
+   </nav><!-- Hero -->
+   <section id="hero" class="relative w-full flex items-center" style="min-height:100%;background:#fafafa">
+    <div class="max-w-7xl mx-auto px-6 pt-32 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+     <div>
+      <p class="text-sm tracking-[.3em] uppercase mb-6 font-medium" style="color:#999">Premium Footwear — 2025</p>
+      <h1 class="font-display leading-[.95]" style="font-size:clamp(3.5rem,8vw,7rem)">
+       <div class="hero-line">
+        <span id="hero-t1">Walk the</span>
+       </div>
+       <div class="hero-line">
+        <span id="hero-t2" class="italic" style="color:#555">Future</span>
+       </div></h1>
+      <p id="hero-sub" class="mt-8 text-lg leading-relaxed max-w-md" style="color:#666">Engineered for those who move with purpose</p>
+      <div class="mt-10 flex flex-wrap gap-4"><a href="#shop" class="buy-btn inline-flex items-center gap-2 px-8 py-4 text-sm tracking-wide font-medium text-white" style="background:#0a0a0a"><span>Explorar Coleção</span></a> <a href="#portfolio" class="inline-flex items-center gap-2 px-8 py-4 text-sm tracking-wide font-medium border" style="border-color:#ccc;color:#0a0a0a">Ver Portfólio</a>
+      </div>
+     </div>
+     <div class="flex justify-center lg:justify-end">
+      <svg class="sneaker-svg" width="420" height="320" viewbox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto"><ellipse cx="210" cy="280" rx="180" ry="20" fill="#e8e8e8" /> <path d="M60 200 C60 160 80 130 120 120 L200 100 C240 90 280 95 310 110 L360 140 C380 155 385 175 380 200 L370 230 C365 245 350 255 330 255 L90 255 C75 255 62 245 60 230 Z" fill="#1a1a1a" /> <path d="M120 120 L200 100 C240 90 280 95 310 110 L280 130 C250 120 220 115 190 120 L130 140 Z" fill="#2a2a2a" /> <path d="M80 210 L350 210 L345 235 C342 248 332 255 320 255 L100 255 C88 255 78 248 76 235 Z" fill="#f5f5f5" /> <path d="M85 215 L345 215" stroke="#ddd" stroke-width="1.5" /> <circle cx="150" cy="145" r="4" fill="#444" /> <circle cx="170" cy="138" r="4" fill="#444" /> <circle cx="190" cy="133" r="4" fill="#444" /> <circle cx="210" cy="130" r="4" fill="#444" /> <path d="M155 150 L175 143 L195 138 L215 135" stroke="#333" stroke-width="1.5" fill="none" /> <path d="M310 150 L340 170 L360 190" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" />
+      </svg>
+     </div>
+    </div>
+   </section><!-- Marquee -->
+   <div class="w-full py-4 overflow-hidden border-y" style="border-color:#e0e0e0;background:#f0f0f0">
+    <div class="marquee whitespace-nowrap"><span class="inline-block text-sm tracking-[.25em] uppercase font-medium mx-12" style="color:#999">Comfort · Design · Innovation · Performance · Style · Comfort · Design · Innovation · Performance · Style · </span> <span class="inline-block text-sm tracking-[.25em] uppercase font-medium mx-12" style="color:#999">Comfort · Design · Innovation · Performance · Style · Comfort · Design · Innovation · Performance · Style · </span>
+    </div>
+   </div><!-- Shop -->
+   <section id="shop" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="reveal flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-4">
+      <div>
+       <p class="text-xs tracking-[.3em] uppercase mb-3 font-medium" style="color:#999">01 — Shop</p>
+       <h2 id="shop-heading" class="font-display text-5xl md:text-6xl">The Collection</h2>
+      </div>
+      <p class="text-sm max-w-xs" style="color:#888">Cada par é projetado para elevar o cotidiano em algo extraordinário.</p>
+     </div>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="products-grid"></div>
+    </div>
+   </section><!-- Portfolio -->
+   <section id="portfolio" class="py-24 px-6" style="background:#0a0a0a;color:#fafafa">
+    <div class="max-w-7xl mx-auto">
+     <div class="reveal mb-16">
+      <p class="text-xs tracking-[.3em] uppercase mb-3 font-medium" style="color:#666">02 — Portfólio</p>
+      <h2 id="portfolio-heading" class="font-display text-5xl md:text-6xl">Archives</h2>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="portfolio-grid"></div>
+    </div>
+   </section><!-- Blog -->
+   <section id="blog" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="reveal flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-4">
+      <div>
+       <p class="text-xs tracking-[.3em] uppercase mb-3 font-medium" style="color:#999">03 — Blog</p>
+       <h2 id="blog-heading" class="font-display text-5xl md:text-6xl">Journal</h2>
+      </div>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="blog-grid"></div>
+    </div>
+   </section><!-- Footer -->
+   <footer id="footer" class="py-16 px-6 border-t" style="border-color:#e0e0e0;background:#0a0a0a;color:#999">
+    <div class="max-w-7xl mx-auto">
+     <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      <div class="md:col-span-2">
+       <p id="footer-brand" class="font-display text-3xl mb-4" style="color:#fafafa">STRIDE</p>
+       <p class="text-sm leading-relaxed max-w-sm">Desenhando o futuro do calçado, um passo de cada vez. Premium, sustentável, icônico.</p>
+      </div>
+      <div>
+       <p class="text-xs tracking-[.2em] uppercase mb-4" style="color:#666">Navegação</p>
+       <div class="flex flex-col gap-2 text-sm">
+        <a href="#shop" class="hover:text-white transition-colors">Loja</a><a href="#portfolio" class="hover:text-white transition-colors">Portfólio</a><a href="#blog" class="hover:text-white transition-colors">Journal</a>
+       </div>
+      </div>
+      <div>
+       <p class="text-xs tracking-[.2em] uppercase mb-4" style="color:#666">Social</p>
+       <div class="flex gap-4">
+        <a href="#" class="hover:text-white transition-colors"><i data-lucide="instagram" style="width:20px;height:20px"></i></a><a href="#" class="hover:text-white transition-colors"><i data-lucide="twitter" style="width:20px;height:20px"></i></a><a href="#" class="hover:text-white transition-colors"><i data-lucide="youtube" style="width:20px;height:20px"></i></a>
+       </div>
+      </div>
+     </div>
+     <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t text-xs" style="border-color:#222">
+      <p>© 2025 STRIDE. Todos os direitos reservados.</p>
+      <p>Feito com propósito.</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+// Data
+const products = [
+  {name:'Phantom X1',price:'R$ 899',tag:'Novo',colors:['#1a1a1a','#f5f5f5','#8b5e3c'],gradient:'linear-gradient(135deg,#1a1a1a,#333)'},
+  {name:'Aurora Low',price:'R$ 749',tag:'Popular',colors:['#e8e0d5','#c4b5a0','#f5f5f5'],gradient:'linear-gradient(135deg,#e8e0d5,#c4b5a0)'},
+  {name:'Volt Runner',price:'R$ 1.199',tag:'Premium',colors:['#0a0a0a','#c8ff00','#333'],gradient:'linear-gradient(135deg,#222,#0a0a0a)'},
+  {name:'Cloud 90',price:'R$ 649',tag:'',colors:['#f0f0f0','#ddd','#fff'],gradient:'linear-gradient(135deg,#f0f0f0,#e5e5e5)'},
+  {name:'Obsidian Pro',price:'R$ 999',tag:'Destaque',colors:['#2c2c3a','#4a4a5e','#1a1a2e'],gradient:'linear-gradient(135deg,#2c2c3a,#1a1a2e)'},
+  {name:'Terra Mid',price:'R$ 849',tag:'',colors:['#5c4033','#8b6914','#d4a574'],gradient:'linear-gradient(135deg,#5c4033,#8b6914)'},
+  {name:'Frost Lite',price:'R$ 599',tag:'Oferta',colors:['#cce5ff','#99ccff','#fff'],gradient:'linear-gradient(135deg,#cce5ff,#e8f4ff)'},
+  {name:'Nexus High',price:'R$ 1.399',tag:'Exclusivo',colors:['#0a0a0a','#ff3333','#1a1a1a'],gradient:'linear-gradient(135deg,#1a1a1a,#330000)'}
+];
+
+const portfolioItems = [
+  {title:'Coleção Midnight',desc:'Outono/Inverno 2025',bg:'linear-gradient(135deg,#0a0a0a,#1a1a2e)',h:'h-80'},
+  {title:'Série Orgânica',desc:'Materiais Sustentáveis',bg:'linear-gradient(135deg,#5c4033,#8b6914)',h:'h-64'},
+  {title:'Linha Futurista',desc:'Tecnologia de Ponta',bg:'linear-gradient(135deg,#222,#444)',h:'h-64'},
+  {title:'Edição Limitada',desc:'Apenas 500 Pares',bg:'linear-gradient(135deg,#2c2c3a,#4a4a5e)',h:'h-80'},
+  {title:'Collab Series',desc:'Artistas × STRIDE',bg:'linear-gradient(135deg,#1a1a1a,#333)',h:'h-72'},
+  {title:'Essentials',desc:'O Básico Perfeito',bg:'linear-gradient(135deg,#e8e0d5,#c4b5a0)',h:'h-72'}
+];
+
+const blogPosts = [
+  {title:'O Futuro do Sneaker Design',cat:'Design',date:'Jan 2025',desc:'Como a tecnologia está redefinindo o que calçamos.'},
+  {title:'Guia de Estilo: Tênis no Trabalho',cat:'Estilo',date:'Fev 2025',desc:'Dicas para usar sneakers com elegância no escritório.'},
+  {title:'Sustentabilidade no Calçado',cat:'Cultura',date:'Mar 2025',desc:'Nosso compromisso com materiais reciclados e produção ética.'}
+];
+
+// Render products
+function renderProducts(){
+  const g=document.getElementById('products-grid');
+  g.innerHTML=products.map((p,i)=>`
+    <div class="product-card reveal reveal-delay-${(i%4)+1} cursor-pointer group">
+      <div class="relative rounded-2xl overflow-hidden mb-4" style="background:${p.gradient};aspect-ratio:1/1">
+        <div class="product-img absolute inset-0 flex items-center justify-center">
+          <svg width="180" height="140" viewBox="0 0 420 320" fill="none" style="opacity:.85;filter:drop-shadow(0 10px 30px rgba(0,0,0,.2))">
+            <path d="M60 200 C60 160 80 130 120 120 L200 100 C240 90 280 95 310 110 L360 140 C380 155 385 175 380 200 L370 230 C365 245 350 255 330 255 L90 255 C75 255 62 245 60 230 Z" fill="${p.colors[0]}"/>
+            <path d="M120 120 L200 100 C240 90 280 95 310 110 L280 130 C250 120 220 115 190 120 L130 140 Z" fill="${p.colors[1]}" opacity=".5"/>
+            <path d="M80 210 L350 210 L345 235 C342 248 332 255 320 255 L100 255 C88 255 78 248 76 235 Z" fill="${p.colors[2]}"/>
+          </svg>
+        </div>
+        ${p.tag?`<span class="absolute top-4 left-4 text-[10px] tracking-[.2em] uppercase font-semibold px-3 py-1 rounded-full" style="background:#fafafa;color:#0a0a0a">${p.tag}</span>`:''}
+        <button class="absolute bottom-4 right-4 w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0" style="background:#fafafa" aria-label="Adicionar ao carrinho"><i data-lucide="shopping-bag" style="width:16px;height:16px;color:#0a0a0a"></i></button>
+      </div>
+      <div class="flex justify-between items-start px-1">
+        <div><p class="font-medium text-sm">${p.name}</p><p class="text-xs mt-1" style="color:#999">Sneaker</p></div>
+        <p class="font-medium text-sm">${p.price}</p>
+      </div>
+    </div>
+  `).join('');
+  lucide.createIcons();
+}
+
+// Render portfolio
+function renderPortfolio(){
+  const g=document.getElementById('portfolio-grid');
+  g.innerHTML=portfolioItems.map((p,i)=>`
+    <div class="portfolio-item reveal reveal-delay-${(i%3)+1} rounded-2xl ${p.h} cursor-pointer ${i===0||i===3?'md:row-span-2':''}" style="background:${p.bg}">
+      <div class="overlay absolute inset-0 rounded-2xl flex flex-col justify-end p-6" style="background:linear-gradient(to top,rgba(0,0,0,.7),transparent)">
+        <p class="text-xs tracking-[.2em] uppercase mb-2" style="color:#999">${p.desc}</p>
+        <p class="font-display text-2xl" style="color:#fafafa">${p.title}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Render blog
+function renderBlog(){
+  const g=document.getElementById('blog-grid');
+  g.innerHTML=blogPosts.map((p,i)=>`
+    <article class="blog-card reveal reveal-delay-${i+1} cursor-pointer group">
+      <div class="rounded-2xl mb-5 overflow-hidden" style="background:linear-gradient(135deg,#e8e8e8,#f5f5f5);aspect-ratio:16/10">
+        <div class="w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+          <i data-lucide="file-text" style="width:40px;height:40px;color:#bbb"></i>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-[10px] tracking-[.2em] uppercase font-semibold px-3 py-1 rounded-full" style="background:#f0f0f0">${p.cat}</span>
+        <span class="text-xs" style="color:#999">${p.date}</span>
+      </div>
+      <h3 class="font-display text-xl mb-2">${p.title}</h3>
+      <p class="text-sm" style="color:#888">${p.desc}</p>
+    </article>
+  `).join('');
+  lucide.createIcons();
+}
+
+renderProducts();renderPortfolio();renderBlog();
+
+// Scroll reveal
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+function observeReveals(){document.querySelectorAll('.reveal:not(.visible)').forEach(el=>obs.observe(el))}
+observeReveals();
+
+// Navbar scroll
+const app=document.getElementById('app');
+const navbar=document.getElementById('navbar');
+app.addEventListener('scroll',()=>{
+  navbar.style.background=app.scrollTop>80?'rgba(250,250,250,.95)':'transparent';
+  navbar.style.backdropFilter=app.scrollTop>80?'blur(10px)':'none';
+});
+
+// Mobile menu
+document.getElementById('mobile-toggle').addEventListener('click',()=>{
+  const m=document.getElementById('mobile-menu');
+  m.classList.toggle('hidden');
+});
+function closeMobile(){document.getElementById('mobile-menu').classList.add('hidden')}
+
+// Toast for buy
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('[aria-label="Adicionar ao carrinho"]');
+  if(!btn)return;
+  const toast=document.createElement('div');
+  toast.className='fixed bottom-6 right-6 z-50 px-6 py-3 rounded-xl text-sm font-medium shadow-2xl';
+  toast.style.cssText='background:#0a0a0a;color:#fafafa;animation:slideUp .4s ease forwards';
+  toast.textContent='Adicionado ao carrinho ✓';
+  document.body.appendChild(toast);
+  setTimeout(()=>{toast.style.opacity='0';toast.style.transition='opacity .3s';setTimeout(()=>toast.remove(),300)},2000);
+});
+
+lucide.createIcons();
+
+// Element SDK
+const defaultConfig={
+  background_color:'#fafafa',
+  surface_color:'#0a0a0a',
+  text_color:'#0a0a0a',
+  primary_action_color:'#0a0a0a',
+  secondary_action_color:'#999999',
+  font_family:'Instrument Serif',
+  font_size:16,
+  brand_name:'STRIDE',
+  hero_title:'Walk the Future',
+  hero_subtitle:'Engineered for those who move with purpose',
+  shop_title:'The Collection',
+  portfolio_title:'Archives',
+  blog_title:'Journal'
+};
+
+async function applyConfig(c){
+  const bg=c.background_color||defaultConfig.background_color;
+  const surface=c.surface_color||defaultConfig.surface_color;
+  const txt=c.text_color||defaultConfig.text_color;
+  const primary=c.primary_action_color||defaultConfig.primary_action_color;
+  const secondary=c.secondary_action_color||defaultConfig.secondary_action_color;
+  const ff=c.font_family||defaultConfig.font_family;
+  const fs=c.font_size||defaultConfig.font_size;
+
+  document.body.style.background=bg;document.body.style.color=txt;
+  document.getElementById('hero').style.background=bg;
+  document.getElementById('navbar').querySelectorAll('a,button').forEach(el=>el.style.color=txt);
+  document.getElementById('nav-brand').textContent=c.brand_name||defaultConfig.brand_name;
+  document.getElementById('nav-brand').style.fontFamily=`${ff}, Georgia, serif`;
+  document.getElementById('footer-brand').textContent=c.brand_name||defaultConfig.brand_name;
+  document.getElementById('footer-brand').style.fontFamily=`${ff}, Georgia, serif`;
+
+  const ht=c.hero_title||defaultConfig.hero_title;
+  const parts=ht.split(' ');
+  const last=parts.pop();
+  document.getElementById('hero-t1').textContent=parts.join(' ')||'';
+  document.getElementById('hero-t2').textContent=last||'';
+  document.getElementById('hero-sub').textContent=c.hero_subtitle||defaultConfig.hero_subtitle;
+  document.getElementById('hero-sub').style.fontSize=`${fs}px`;
+
+  document.getElementById('shop-heading').textContent=c.shop_title||defaultConfig.shop_title;
+  document.getElementById('portfolio-heading').textContent=c.portfolio_title||defaultConfig.portfolio_title;
+  document.getElementById('blog-heading').textContent=c.blog_title||defaultConfig.blog_title;
+
+  // Apply font to display elements
+  document.querySelectorAll('.font-display, h1, h2, h3').forEach(el=>{
+    el.style.fontFamily=`${ff}, Georgia, serif`;
+  });
+
+  // Colors
+  const portfolio=document.getElementById('portfolio');
+  portfolio.style.background=surface;portfolio.style.color=bg;
+  const footer=document.getElementById('footer');
+  footer.style.background=surface;
+
+  // Buttons
+  document.querySelectorAll('.buy-btn').forEach(b=>{b.style.background=primary;b.style.color=bg});
+
+  // Secondary color
+  document.querySelectorAll('[style*="color:#999"]').forEach(el=>el.style.color=secondary);
+}
+
+window.elementSdk.init({
+  defaultConfig,
+  onConfigChange:applyConfig,
+  mapToCapabilities:(c)=>({
+    recolorables:[
+      {get:()=>c.background_color||defaultConfig.background_color,set:v=>{c.background_color=v;window.elementSdk.setConfig({background_color:v})}},
+      {get:()=>c.surface_color||defaultConfig.surface_color,set:v=>{c.surface_color=v;window.elementSdk.setConfig({surface_color:v})}},
+      {get:()=>c.text_color||defaultConfig.text_color,set:v=>{c.text_color=v;window.elementSdk.setConfig({text_color:v})}},
+      {get:()=>c.primary_action_color||defaultConfig.primary_action_color,set:v=>{c.primary_action_color=v;window.elementSdk.setConfig({primary_action_color:v})}},
+      {get:()=>c.secondary_action_color||defaultConfig.secondary_action_color,set:v=>{c.secondary_action_color=v;window.elementSdk.setConfig({secondary_action_color:v})}}
+    ],
+    borderables:[],
+    fontEditable:{get:()=>c.font_family||defaultConfig.font_family,set:v=>{c.font_family=v;window.elementSdk.setConfig({font_family:v})}},
+    fontSizeable:{get:()=>c.font_size||defaultConfig.font_size,set:v=>{c.font_size=v;window.elementSdk.setConfig({font_size:v})}}
+  }),
+  mapToEditPanelValues:(c)=>new Map([
+    ['brand_name',c.brand_name||defaultConfig.brand_name],
+    ['hero_title',c.hero_title||defaultConfig.hero_title],
+    ['hero_subtitle',c.hero_subtitle||defaultConfig.hero_subtitle],
+    ['shop_title',c.shop_title||defaultConfig.shop_title],
+    ['portfolio_title',c.portfolio_title||defaultConfig.portfolio_title],
+    ['blog_title',c.blog_title||defaultConfig.blog_title]
+  ])
+});
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e9d39871407f612',t:'MTc3NTc3NjY0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
